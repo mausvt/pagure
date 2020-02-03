@@ -36,6 +36,8 @@ from pagure.lib.repo import PagureRepo
 class PagureFlaskApiProjecttests(tests.Modeltests):
     """ Tests for the flask API of pagure for issue """
 
+    maxDiff = None
+
     def setUp(self):
         super(PagureFlaskApiProjecttests, self).setUp()
         self.gga_patcher = patch(
@@ -312,9 +314,15 @@ class PagureFlaskApiProjecttests(tests.Modeltests):
             },
             "projects": [
                 {
-                    "access_groups": {"admin": [], "commit": [], "ticket": []},
+                    "access_groups": {
+                        "admin": [],
+                        "collaborator": [],
+                        "commit": [],
+                        "ticket": [],
+                    },
                     "access_users": {
                         "admin": [],
+                        "collaborator": [],
                         "commit": [],
                         "owner": ["pingou"],
                         "ticket": [],
@@ -528,9 +536,15 @@ class PagureFlaskApiProjecttests(tests.Modeltests):
             },
             "projects": [
                 {
-                    "access_groups": {"admin": [], "commit": [], "ticket": []},
+                    "access_groups": {
+                        "admin": [],
+                        "collaborator": [],
+                        "commit": [],
+                        "ticket": [],
+                    },
                     "access_users": {
                         "admin": [],
+                        "collaborator": [],
                         "commit": [],
                         "owner": ["pingou"],
                         "ticket": [],
@@ -589,9 +603,15 @@ class PagureFlaskApiProjecttests(tests.Modeltests):
             },
             "projects": [
                 {
-                    "access_groups": {"admin": [], "commit": [], "ticket": []},
+                    "access_groups": {
+                        "admin": [],
+                        "collaborator": [],
+                        "commit": [],
+                        "ticket": [],
+                    },
                     "access_users": {
                         "admin": [],
+                        "collaborator": [],
                         "commit": [],
                         "owner": ["pingou"],
                         "ticket": [],
@@ -622,9 +642,15 @@ class PagureFlaskApiProjecttests(tests.Modeltests):
                     },
                 },
                 {
-                    "access_groups": {"admin": [], "commit": [], "ticket": []},
+                    "access_groups": {
+                        "admin": [],
+                        "collaborator": [],
+                        "commit": [],
+                        "ticket": [],
+                    },
                     "access_users": {
                         "admin": [],
+                        "collaborator": [],
                         "commit": [],
                         "owner": ["pingou"],
                         "ticket": [],
@@ -655,9 +681,15 @@ class PagureFlaskApiProjecttests(tests.Modeltests):
                     },
                 },
                 {
-                    "access_groups": {"admin": [], "commit": [], "ticket": []},
+                    "access_groups": {
+                        "admin": [],
+                        "collaborator": [],
+                        "commit": [],
+                        "ticket": [],
+                    },
                     "access_users": {
                         "admin": [],
+                        "collaborator": [],
                         "commit": [],
                         "owner": ["pingou"],
                         "ticket": [],
@@ -716,9 +748,15 @@ class PagureFlaskApiProjecttests(tests.Modeltests):
             },
             "projects": [
                 {
-                    "access_groups": {"admin": [], "commit": [], "ticket": []},
+                    "access_groups": {
+                        "admin": [],
+                        "collaborator": [],
+                        "commit": [],
+                        "ticket": [],
+                    },
                     "access_users": {
                         "admin": [],
+                        "collaborator": [],
                         "commit": [],
                         "owner": ["pingou"],
                         "ticket": [],
@@ -749,9 +787,15 @@ class PagureFlaskApiProjecttests(tests.Modeltests):
                     },
                 },
                 {
-                    "access_groups": {"admin": [], "commit": [], "ticket": []},
+                    "access_groups": {
+                        "admin": [],
+                        "collaborator": [],
+                        "commit": [],
+                        "ticket": [],
+                    },
                     "access_users": {
                         "admin": [],
+                        "collaborator": [],
                         "commit": [],
                         "owner": ["pingou"],
                         "ticket": [],
@@ -782,9 +826,15 @@ class PagureFlaskApiProjecttests(tests.Modeltests):
                     },
                 },
                 {
-                    "access_groups": {"admin": [], "commit": [], "ticket": []},
+                    "access_groups": {
+                        "admin": [],
+                        "collaborator": [],
+                        "commit": [],
+                        "ticket": [],
+                    },
                     "access_users": {
                         "admin": [],
+                        "collaborator": [],
                         "commit": [],
                         "owner": ["pingou"],
                         "ticket": [],
@@ -839,9 +889,15 @@ class PagureFlaskApiProjecttests(tests.Modeltests):
             },
             "projects": [
                 {
-                    "access_groups": {"admin": [], "commit": [], "ticket": []},
+                    "access_groups": {
+                        "admin": [],
+                        "collaborator": [],
+                        "commit": [],
+                        "ticket": [],
+                    },
                     "access_users": {
                         "admin": [],
+                        "collaborator": [],
                         "commit": [],
                         "owner": ["pingou"],
                         "ticket": [],
@@ -896,9 +952,15 @@ class PagureFlaskApiProjecttests(tests.Modeltests):
             },
             "projects": [
                 {
-                    "access_groups": {"admin": [], "commit": [], "ticket": []},
+                    "access_groups": {
+                        "admin": [],
+                        "collaborator": [],
+                        "commit": [],
+                        "ticket": [],
+                    },
                     "access_users": {
                         "admin": [],
+                        "collaborator": [],
                         "commit": [],
                         "owner": ["pingou"],
                         "ticket": [],
@@ -969,9 +1031,15 @@ class PagureFlaskApiProjecttests(tests.Modeltests):
         data["date_created"] = "1436527638"
         data["date_modified"] = "1436527638"
         expected_data = {
-            "access_groups": {"admin": [], "commit": [], "ticket": []},
+            "access_groups": {
+                "admin": [],
+                "collaborator": [],
+                "commit": [],
+                "ticket": [],
+            },
             "access_users": {
                 "admin": [],
+                "collaborator": [],
                 "commit": [],
                 "owner": ["pingou"],
                 "ticket": [],
@@ -1059,11 +1127,13 @@ class PagureFlaskApiProjecttests(tests.Modeltests):
         expected_data = {
             "access_groups": {
                 "admin": [],
+                "collaborator": [],
                 "commit": ["some_group"],
                 "ticket": [],
             },
             "access_users": {
                 "admin": [],
+                "collaborator": [],
                 "commit": [],
                 "owner": ["pingou"],
                 "ticket": [],
@@ -1123,9 +1193,15 @@ class PagureFlaskApiProjecttests(tests.Modeltests):
         data["date_created"] = "1436527638"
         data["date_modified"] = "1436527638"
         expected_data = {
-            "access_groups": {"admin": [], "commit": [], "ticket": []},
+            "access_groups": {
+                "admin": [],
+                "collaborator": [],
+                "commit": [],
+                "ticket": [],
+            },
             "access_users": {
                 "admin": [],
+                "collaborator": [],
                 "commit": [],
                 "owner": ["pingou"],
                 "ticket": [],
@@ -1188,9 +1264,15 @@ class PagureFlaskApiProjecttests(tests.Modeltests):
             },
             "projects": [
                 {
-                    "access_groups": {"admin": [], "commit": [], "ticket": []},
+                    "access_groups": {
+                        "admin": [],
+                        "collaborator": [],
+                        "commit": [],
+                        "ticket": [],
+                    },
                     "access_users": {
                         "admin": [],
+                        "collaborator": [],
                         "commit": [],
                         "owner": ["pingou"],
                         "ticket": [],
@@ -1221,9 +1303,15 @@ class PagureFlaskApiProjecttests(tests.Modeltests):
                     },
                 },
                 {
-                    "access_groups": {"admin": [], "commit": [], "ticket": []},
+                    "access_groups": {
+                        "admin": [],
+                        "collaborator": [],
+                        "commit": [],
+                        "ticket": [],
+                    },
                     "access_users": {
                         "admin": [],
+                        "collaborator": [],
                         "commit": [],
                         "owner": ["pingou"],
                         "ticket": [],
@@ -1254,9 +1342,15 @@ class PagureFlaskApiProjecttests(tests.Modeltests):
                     },
                 },
                 {
-                    "access_groups": {"admin": [], "commit": [], "ticket": []},
+                    "access_groups": {
+                        "admin": [],
+                        "collaborator": [],
+                        "commit": [],
+                        "ticket": [],
+                    },
                     "access_users": {
                         "admin": [],
+                        "collaborator": [],
                         "commit": [],
                         "owner": ["pingou"],
                         "ticket": [],
@@ -1325,9 +1419,15 @@ class PagureFlaskApiProjecttests(tests.Modeltests):
             "pagination": {"next": None, "page": 2, "pages": 2, "per_page": 2},
             "projects": [
                 {
-                    "access_groups": {"admin": [], "commit": [], "ticket": []},
+                    "access_groups": {
+                        "admin": [],
+                        "collaborator": [],
+                        "commit": [],
+                        "ticket": [],
+                    },
                     "access_users": {
                         "admin": [],
+                        "collaborator": [],
                         "commit": [],
                         "owner": ["pingou"],
                         "ticket": [],
@@ -1483,9 +1583,15 @@ class PagureFlaskApiProjecttests(tests.Modeltests):
         data["date_created"] = "1496338274"
         data["date_modified"] = "1496338274"
         expected_output = {
-            "access_groups": {"admin": [], "commit": [], "ticket": []},
+            "access_groups": {
+                "admin": [],
+                "collaborator": [],
+                "commit": [],
+                "ticket": [],
+            },
             "access_users": {
                 "admin": [],
+                "collaborator": [],
                 "commit": [],
                 "owner": ["foo"],
                 "ticket": [],
@@ -1538,9 +1644,15 @@ class PagureFlaskApiProjecttests(tests.Modeltests):
         data["date_created"] = "1496338274"
         data["date_modified"] = "1496338274"
         expected_output = {
-            "access_groups": {"admin": [], "commit": [], "ticket": []},
+            "access_groups": {
+                "admin": [],
+                "collaborator": [],
+                "commit": [],
+                "ticket": [],
+            },
             "access_users": {
                 "admin": ["pingou"],
+                "collaborator": [],
                 "commit": [],
                 "owner": ["foo"],
                 "ticket": [],
@@ -1603,9 +1715,15 @@ class PagureFlaskApiProjecttests(tests.Modeltests):
         data["date_created"] = "1496338274"
         data["date_modified"] = "1496338274"
         expected_output = {
-            "access_groups": {"admin": [], "commit": [], "ticket": []},
+            "access_groups": {
+                "admin": [],
+                "collaborator": [],
+                "commit": [],
+                "ticket": [],
+            },
             "access_users": {
                 "admin": ["pingou"],
+                "collaborator": [],
                 "commit": [],
                 "owner": ["foo"],
                 "ticket": [],
@@ -1660,9 +1778,15 @@ class PagureFlaskApiProjecttests(tests.Modeltests):
         data["date_created"] = "1496338274"
         data["date_modified"] = "1496338274"
         expected_output = {
-            "access_groups": {"admin": [], "commit": [], "ticket": []},
+            "access_groups": {
+                "admin": [],
+                "collaborator": [],
+                "commit": [],
+                "ticket": [],
+            },
             "access_users": {
                 "admin": [],
+                "collaborator": [],
                 "commit": [],
                 "owner": ["foo"],
                 "ticket": [],
@@ -1719,9 +1843,15 @@ class PagureFlaskApiProjecttests(tests.Modeltests):
         data["date_created"] = "1496338274"
         data["date_modified"] = "1496338274"
         expected_output = {
-            "access_groups": {"admin": [], "commit": [], "ticket": []},
+            "access_groups": {
+                "admin": [],
+                "collaborator": [],
+                "commit": [],
+                "ticket": [],
+            },
             "access_users": {
                 "admin": [],
+                "collaborator": [],
                 "commit": [],
                 "owner": ["foo"],
                 "ticket": [],
@@ -3406,7 +3536,8 @@ class PagureFlaskApiProjectModifyAclTests(tests.Modeltests):
 
         project = pagure.lib.query._get_project(self.session, "test")
         self.assertEquals(
-            project.access_users, {"admin": [], "commit": [], "ticket": []}
+            project.access_users,
+            {"admin": [], "collaborator": [], "commit": [], "ticket": []},
         )
 
     def test_api_modify_acls_no_project(self):
@@ -3546,9 +3677,15 @@ class PagureFlaskApiProjectModifyAclTests(tests.Modeltests):
         data["date_modified"] = "1510742566"
 
         expected_output = {
-            "access_groups": {"admin": [], "commit": [], "ticket": []},
+            "access_groups": {
+                "admin": [],
+                "collaborator": [],
+                "commit": [],
+                "ticket": [],
+            },
             "access_users": {
                 "admin": [],
+                "collaborator": [],
                 "commit": ["foo"],
                 "owner": ["pingou"],
                 "ticket": [],
@@ -3610,9 +3747,15 @@ class PagureFlaskApiProjectModifyAclTests(tests.Modeltests):
         data["date_modified"] = "1510742566"
 
         expected_output = {
-            "access_groups": {"admin": [], "commit": [], "ticket": ["baz"]},
+            "access_groups": {
+                "admin": [],
+                "collaborator": [],
+                "commit": [],
+                "ticket": ["baz"],
+            },
             "access_users": {
                 "admin": [],
+                "collaborator": [],
                 "commit": [],
                 "owner": ["pingou"],
                 "ticket": [],
@@ -3651,7 +3794,8 @@ class PagureFlaskApiProjectModifyAclTests(tests.Modeltests):
 
         project = pagure.lib.query._get_project(self.session, "test")
         self.assertEquals(
-            project.access_users, {"admin": [], "commit": [], "ticket": []}
+            project.access_users,
+            {"admin": [], "collaborator": [], "commit": [], "ticket": []},
         )
 
         data = {"user_type": "user", "name": "foo"}
@@ -3700,7 +3844,12 @@ class PagureFlaskApiProjectModifyAclTests(tests.Modeltests):
         user_foo = pagure.lib.query.search_user(self.session, username="foo")
         self.assertEquals(
             project.access_users,
-            {"admin": [], "commit": [user_foo], "ticket": []},
+            {
+                "admin": [],
+                "collaborator": [],
+                "commit": [user_foo],
+                "ticket": [],
+            },
         )
 
         # Create an API token for `foo` for the project `test`
@@ -3729,9 +3878,15 @@ class PagureFlaskApiProjectModifyAclTests(tests.Modeltests):
         data["date_modified"] = "1510742566"
 
         expected_output = {
-            "access_groups": {"admin": [], "commit": [], "ticket": []},
+            "access_groups": {
+                "admin": [],
+                "collaborator": [],
+                "commit": [],
+                "ticket": [],
+            },
             "access_users": {
                 "admin": [],
+                "collaborator": [],
                 "commit": [],
                 "owner": ["pingou"],
                 "ticket": [],
@@ -3768,7 +3923,8 @@ class PagureFlaskApiProjectModifyAclTests(tests.Modeltests):
         self.session = pagure.lib.query.create_session(self.dbpath)
         project = pagure.lib.query._get_project(self.session, "test")
         self.assertEquals(
-            project.access_users, {"admin": [], "commit": [], "ticket": []}
+            project.access_users,
+            {"admin": [], "collaborator": [], "commit": [], "ticket": []},
         )
 
     def test_api_modify_acls_remove_someone_else_acl(self):
@@ -3782,7 +3938,12 @@ class PagureFlaskApiProjectModifyAclTests(tests.Modeltests):
         user_foo = pagure.lib.query.search_user(self.session, username="foo")
         self.assertEquals(
             project.access_users,
-            {"admin": [], "commit": [user_foo], "ticket": []},
+            {
+                "admin": [],
+                "collaborator": [],
+                "commit": [user_foo],
+                "ticket": [],
+            },
         )
 
         headers = {"Authorization": "token aaabbbcccddd"}
@@ -3796,9 +3957,15 @@ class PagureFlaskApiProjectModifyAclTests(tests.Modeltests):
         data["date_modified"] = "1510742566"
 
         expected_output = {
-            "access_groups": {"admin": [], "commit": [], "ticket": []},
+            "access_groups": {
+                "admin": [],
+                "collaborator": [],
+                "commit": [],
+                "ticket": [],
+            },
             "access_users": {
                 "admin": [],
+                "collaborator": [],
                 "commit": [],
                 "owner": ["pingou"],
                 "ticket": [],
@@ -3835,7 +4002,8 @@ class PagureFlaskApiProjectModifyAclTests(tests.Modeltests):
         self.session = pagure.lib.query.create_session(self.dbpath)
         project = pagure.lib.query._get_project(self.session, "test")
         self.assertEquals(
-            project.access_users, {"admin": [], "commit": [], "ticket": []}
+            project.access_users,
+            {"admin": [], "collaborator": [], "commit": [], "ticket": []},
         )
 
 
@@ -3854,7 +4022,8 @@ class PagureFlaskApiProjectOptionsTests(tests.Modeltests):
 
         project = pagure.lib.query._get_project(self.session, "test")
         self.assertEquals(
-            project.access_users, {"admin": [], "commit": [], "ticket": []}
+            project.access_users,
+            {"admin": [], "collaborator": [], "commit": [], "ticket": []},
         )
 
     def test_api_get_project_options_wrong_project(self):

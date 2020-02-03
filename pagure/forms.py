@@ -628,6 +628,10 @@ class AddUserForm(PagureForm):
         'Access Level <span class="error">*</span>',
         [wtforms.validators.DataRequired()],
     )
+    branches = wtforms.StringField(
+        'Git branches <span class="error">*</span>',
+        [wtforms.validators.Optional()],
+    )
 
 
 class AddUserToGroupForm(PagureForm):
@@ -661,6 +665,10 @@ class AddGroupForm(PagureForm):
     access = wtforms.StringField(
         'Access Level <span class="error">*</span>',
         [wtforms.validators.DataRequired()],
+    )
+    branches = wtforms.StringField(
+        'Git branches <span class="error">*</span>',
+        [wtforms.validators.Optional()],
     )
 
 
